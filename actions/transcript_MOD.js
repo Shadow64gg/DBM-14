@@ -211,7 +211,6 @@ module.exports = {
     if (cache.interaction) {
       await cache.interaction.deferReply();
     } else {
-      console.log("No interaction found.");
     }
 
     const options = {
@@ -234,7 +233,6 @@ module.exports = {
 
       const buffer = transcriptHTML.attachment;
       fs.writeFileSync(filePath, buffer);
-      console.log(`Transcript saved at: ${filePath}`);
 
       const storage = parseInt(data.storage, 10);
       const varName2 = this.evalMessage(data.varName2, cache);
@@ -251,7 +249,6 @@ module.exports = {
             cache.messageId = message.id;
 
             await message.delete();
-            console.log("Message deleted successfully");
           } catch (error) {
             console.error("Error deleting message:", error);
           }
