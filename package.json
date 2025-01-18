@@ -1,0 +1,29 @@
+{
+  "name": "planeta-vipow-s4",
+  "author": "Shadow",
+  "main": "bot.js",
+  "version": "2.1.7",
+  "dependencies": {
+    "@discord-player/core": "^0.1.1",
+    "@discord-player/extractor": "^4.5.1",
+    "@discordjs/builders": "^1.9.0",
+    "@discordjs/collection": "^2.1.1",
+    "@discordjs/rest": "^2.4.0",
+    "@discordjs/voice": "^0.18.0",
+    "@distube/ytdl-core": "^4.15.8",
+    "@distube/ytpl": "^1.2.1",
+    "canvas": "^3.0.1",
+    "chalk": "^5.4.1",
+    "cleverbot-free": "^2.0.3",
+    "discord-api-types": "^0.37.111",
+    "discord.js": "^14.17.3",
+    "fstorm": "^0.1.3",
+    "node-cron": "^3.0.3",
+    "opusscript": "^0.0.8",
+    "shadow-transcripts": "^1.0.1",
+    "simple-youtube-api": "^5.2.1",
+    "youtubei": "^1.6.7",
+    "ytdl-core": "^4.11.5"
+  },
+  "is-music-bot": true
+}

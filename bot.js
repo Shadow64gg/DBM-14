@@ -9,12 +9,11 @@ DBM.version = "3.2.4";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-if (DiscordJS.version !== "14.15.3")
+if (DiscordJS.version !== "14.17.3")
   console.log(
-    `BOT: bot.js; [v1.2] (v3.2.4) (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m14.15.3\x1b[0m)`
+    `Version: (DJS: \x1b[31m\x1b[1m${DiscordJS.version}\x1b[0m --> \x1b[32m\x1b[1m14.17.3\x1b[0m)`
   );
-else
-  console.log(`BOT: bot.js; [v1.2] (v3.2.4) (\x1b[32m\x1b[1m14.15.3\x1b[0m)`);
+else console.log(`Version:  (\x1b[32m\x1b[1m14.17.3\x1b[0m)`);
 
 const noop = () => void 0;
 
@@ -849,7 +848,9 @@ Bot.login = function () {
 
 Bot.onReady = function () {
   process.send?.("BotReady");
-  console.log("Bot is ready!"); // Tells editor to start!
+  console.log("");
+  console.log("Bot is ready!");
+  console.log("");
   this.restoreVariables();
   this.registerApplicationCommands();
   this.preformInitialization();
@@ -2127,7 +2128,7 @@ Actions.getSendTargetFromData = async function (typeData, varNameData, cache) {
 };
 
 Actions.getSendTarget = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 0:
       if (interaction) {
@@ -2225,7 +2226,7 @@ Actions.getSendTarget = async function (type, varName, cache) {
 };
 
 Actions.getSendReplyTarget = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 13:
       const msg = cache.getMessage();
@@ -2416,7 +2417,7 @@ Actions.getRoleFromData = async function (typeData, varNameData, cache) {
 };
 
 Actions.getRole = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 0: {
       const roles =
@@ -2476,7 +2477,7 @@ Actions.getChannelFromData = async function (typeData, varNameData, cache) {
 };
 
 Actions.getChannel = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 0:
       if (interaction) {
@@ -2558,7 +2559,7 @@ Actions.getVoiceChannelFromData = async function (
 };
 
 Actions.getVoiceChannel = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 0: {
       const member = interaction?.member ?? msg?.member;
@@ -2637,7 +2638,7 @@ Actions.getListFromData = async function (typeData, varNameData, cache) {
 };
 
 Actions.getList = async function (type, varName, cache) {
-  const { interaction, msg, server } = cache;
+  const { interaction, msg, server } = cache || {};
   switch (type) {
     case 0:
       if (server) {
@@ -3712,7 +3713,6 @@ try {
   Audio.yts = require("yt-search");
 } catch (e) {
   Audio.yts = null;
-  console.log("npm install yt-search");
 }
 
 Audio.map = new Map();
