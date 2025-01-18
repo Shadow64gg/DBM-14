@@ -921,7 +921,7 @@ module.exports = {
           .catch((err) => this.displayError(data, cache, err));
       }
     } else if (data.reply === true && canReply) {
-      messageOptions.fetchReply = true;
+      messageOptions.withResponse = true;
       if (data.ephemeral === true) {
         messageOptions.ephemeral = true;
       }

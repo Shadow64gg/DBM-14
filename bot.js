@@ -1261,7 +1261,7 @@ Bot.onButtonInteraction = function (interaction) {
     const response = Actions.getInvalidButtonResponseText();
     if (!interactionId.includes("msg-button-")) return;
     if (response) {
-      interaction.reply({ content: response, ephemeral: true });
+      interaction.reply({ content: response, flags: 64 });
     }
   }
 };
@@ -1277,7 +1277,7 @@ Bot.onSelectMenuInteraction = function (interaction) {
     const response = Actions.getInvalidSelectResponseText();
     if (!interactionId.includes("msg-button-")) return;
     if (response) {
-      interaction.reply({ content: response, ephemeral: true });
+      interaction.reply({ content: response, flags: 64 });
     }
   }
 };
@@ -1325,7 +1325,7 @@ const ActionsCache = (Actions.ActionsCache = class ActionsCache {
     if (this.interaction) {
       if (!this.interaction.replied) {
         const replyData = {
-          ephemeral: true,
+          flags: 64,
           content: Actions.getDefaultResponseText(),
         };
         if (this.interaction.deferred) {
@@ -1737,10 +1737,10 @@ Actions.preformActionsFromInteraction = function (
         typeof timeRestriction === "string"
           ? format(invalidCooldown, timeRestriction)
           : invalidCooldown;
-      interaction.reply({ content: content, ephemeral: true });
+      interaction.reply({ content: content, flags: 64 });
     }
   } else if (invalidPermissions) {
-    interaction.reply({ content: invalidPermissions, ephemeral: true });
+    interaction.reply({ content: invalidPermissions, flags: 64 });
   }
 };
 
@@ -2962,7 +2962,7 @@ Actions.checkTemporaryInteractionResponses = function (interaction) {
         } else {
           const invalidUserText = this.getInvalidUserResponse();
           if (invalidUserText) {
-            interaction.reply({ content: invalidUserText, ephemeral: true });
+            interaction.reply({ content: invalidUserText, flags: 64 });
           }
         }
         return true;
