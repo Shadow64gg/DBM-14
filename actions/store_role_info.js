@@ -38,9 +38,7 @@ module.exports = {
       "Role Members Amount",
       "Role Icon",
     ];
-    return `${presets.getRoleText(data.role, data.varName)} - ${
-      info[parseInt(data.info, 10)]
-    }`;
+    return `${presets.getRoleText(data.role, data.varName)} - ${info[parseInt(data.info, 10)]}`;
   },
 
   //---------------------------------------------------------------------
@@ -105,13 +103,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "3.2.4",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl: null,
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -185,11 +177,7 @@ module.exports = {
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const targetRole = await this.getRoleFromData(
-      data.role,
-      data.varName,
-      cache
-    );
+    const targetRole = await this.getRoleFromData(data.role, data.varName, cache);
     const info = parseInt(data.info, 10);
     if (!targetRole) {
       this.callNextAction(cache);
@@ -237,11 +225,7 @@ module.exports = {
         result = targetRole.members.size;
         break;
       case 13:
-        result = targetRole.iconURL({
-          dynamic: true,
-          format: "png",
-          size: 4096,
-        });
+        result = targetRole.iconURL({ dynamic: true, format: "png", size: 4096 });
         break;
       default:
         break;

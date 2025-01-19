@@ -37,9 +37,7 @@ module.exports = {
       "Channel Created At",
       "Channel Created At Timestamp",
     ];
-    return `${presets.getChannelText(data.channel, data.varName)} - ${
-      info[parseInt(data.info, 10)]
-    }`;
+    return `${presets.getChannelText(data.channel, data.varName)} - ${info[parseInt(data.info, 10)]}`;
   },
 
   //---------------------------------------------------------------------
@@ -95,13 +93,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "3.2.4",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl: null,
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -175,11 +167,7 @@ module.exports = {
     const data = cache.actions[cache.index];
     const DiscordJS = this.getDBM().DiscordJS;
 
-    const targetChannel = await this.getChannelFromData(
-      data.channel,
-      data.varName,
-      cache
-    );
+    const targetChannel = await this.getChannelFromData(data.channel, data.varName, cache);
 
     if (!targetChannel) {
       this.callNextAction(cache);

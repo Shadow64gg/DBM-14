@@ -23,9 +23,7 @@ module.exports = {
 
   subtitle(data, presets) {
     const storage = presets.variables;
-    return `${storage[parseInt(data.storage, 10)]} (${data.varName}) => [${
-      data.min
-    }, ${data.max}]`;
+    return `${storage[parseInt(data.storage, 10)]} (${data.varName}) => [${data.min}, ${data.max}]`;
   },
 
   //---------------------------------------------------------------------
@@ -50,13 +48,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "3.2.4",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl: null,
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields

@@ -923,7 +923,8 @@ module.exports = {
     } else if (data.reply === true && canReply) {
       messageOptions.withResponse = true;
       if (data.ephemeral === true) {
-        messageOptions.ephemeral = true;
+        // Zmieniamy to na
+        messageOptions.flags = 64; // Używamy flagi "ephemeral" zamiast przestarzałego `ephemeral: true`
       }
       let promise = null;
       if (cache.interaction.deferred) {

@@ -35,13 +35,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "2.1.7",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl: null,
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -96,30 +90,16 @@ module.exports = {
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const channel = await this.getChannelFromData(
-      data.storage,
-      data.varName,
-      cache
-    );
+    const channel = await this.getChannelFromData(data.storage, data.varName, cache);
     const reason = this.evalMessage(data.reason, cache);
-
-    // Sprawdzamy, czy kanał istnieje
-    if (channel && channel.deletable) {
-      try {
-        await channel.delete({ reason });
-        this.callNextAction(cache);
-      } catch (err) {
-        if (err.code === 10003) {
-          // Kanał nie istnieje, więc ignorujemy błąd
-          console.warn(`Channel not found: ${channel.id}`);
-        } else {
-          // W przypadku innych błędów, pokazujemy szczegóły
-          this.displayError(data, cache, err);
-        }
-      }
+    if (Array.isArray(channel)) {
+      this.callListFunc(channel, "delete", [reason]).then(() => this.callNextAction(cache));
+    } else if (channel?.delete) {
+      channel
+        .delete(reason)
+        .then(() => this.callNextAction(cache))
+        .catch((err) => this.displayError(data, cache, err));
     } else {
-      // Jeśli kanał nie jest dostępny, wywołaj następną akcję
-      console.warn("Channel is either missing or not deletable.");
       this.callNextAction(cache);
     }
   },

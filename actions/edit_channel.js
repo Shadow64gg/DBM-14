@@ -22,11 +22,12 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    const channelTypes = ["Text Channel", "Voice Channel", "Thread Channel"];
-    return `Edit ${presets.getChannelText(
-      data.channel,
-      data.channelVarName
-    )} as a ${channelTypes[data.channelEdits._index ?? 0]}`;
+    const channelTypes = [
+      "Text Channel",
+      "Voice Channel",
+      "Thread Channel",
+    ];
+    return `Edit ${presets.getChannelText(data.channel, data.channelVarName)} as a ${channelTypes[data.channelEdits._index ?? 0]}`;
   },
 
   //---------------------------------------------------------------------
@@ -39,13 +40,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "3.2.4",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl: null,
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -55,13 +50,7 @@ module.exports = {
   // are also the names of the fields stored in the action's JSON data.
   //---------------------------------------------------------------------
 
-  fields: [
-    "channel",
-    "channelVarName",
-    "channelName",
-    "reason",
-    "channelEdits",
-  ],
+  fields: ["channel", "channelVarName", "channelName", "reason", "channelEdits"],
 
   //---------------------------------------------------------------------
   // Command HTML
@@ -240,22 +229,13 @@ module.exports = {
           channelData.topic = this.evalMessage(channelEditData.topic, cache);
         }
         if (channelEditData.categoryID) {
-          channelData.parent = this.evalMessage(
-            channelEditData.categoryID,
-            cache
-          );
+          channelData.parent = this.evalMessage(channelEditData.categoryID, cache);
         }
         if (channelEditData.slowmode) {
-          channelData.rateLimitPerUser = parseInt(
-            this.evalMessage(channelEditData.slowmode, cache),
-            10
-          );
+          channelData.rateLimitPerUser = parseInt(this.evalMessage(channelEditData.slowmode, cache), 10);
         }
         if (channelEditData.position) {
-          channelData.position = parseInt(
-            this.evalMessage(channelEditData.position, cache),
-            10
-          );
+          channelData.position = parseInt(this.evalMessage(channelEditData.position, cache), 10);
         }
         break;
       }
@@ -263,28 +243,16 @@ module.exports = {
       // voice
       case 1: {
         if (channelEditData.regionOverride !== "none") {
-          channelData.rtcRegion =
-            channelEditData.regionOverride === "auto"
-              ? null
-              : channelEditData.regionOverride;
+          channelData.rtcRegion = channelEditData.regionOverride === "auto" ? null : channelEditData.regionOverride;
         }
         if (channelEditData.categoryID) {
-          channelData.parent = this.evalMessage(
-            channelEditData.categoryID,
-            cache
-          );
+          channelData.parent = this.evalMessage(channelEditData.categoryID, cache);
         }
         if (channelEditData.bitrate) {
-          channelData.bitrate = parseInt(
-            this.evalMessage(channelEditData.bitrate, cache),
-            10
-          );
+          channelData.bitrate = parseInt(this.evalMessage(channelEditData.bitrate, cache), 10);
         }
         if (channelEditData.userLimit) {
-          channelData.userLimit = parseInt(
-            this.evalMessage(channelEditData.userLimit, cache),
-            10
-          );
+          channelData.userLimit = parseInt(this.evalMessage(channelEditData.userLimit, cache), 10);
         }
         break;
       }
@@ -292,19 +260,13 @@ module.exports = {
       // thread
       case 2: {
         if (channelEditData.autoArchiveDuration !== "none") {
-          channelData.autoArchiveDuration =
-            channelEditData.autoArchiveDuration === "max"
-              ? "max"
-              : parseInt(channelEditData.autoArchiveDuration, 10);
+          channelData.autoArchiveDuration = channelEditData.autoArchiveDuration === "max" ? "max" : parseInt(channelEditData.autoArchiveDuration, 10);
         }
         if (channelEditData.invitable !== "none") {
           channelData.invitable = channelEditData.invitable === "true";
         }
         if (channelEditData.slowmode) {
-          channelData.rateLimitPerUser = parseInt(
-            this.evalMessage(channelEditData.slowmode, cache),
-            10
-          );
+          channelData.rateLimitPerUser = parseInt(this.evalMessage(channelEditData.slowmode, cache), 10);
         }
         if (channelEditData.locked !== "none") {
           channelData.locked = channelEditData.locked === "true";
@@ -315,16 +277,10 @@ module.exports = {
 
     const channelStorage = parseInt(data.channel, 10);
     const channelVarName = this.evalMessage(data.channelVarName, cache);
-    const channel = await this.getAnyChannel(
-      channelStorage,
-      channelVarName,
-      cache
-    );
+    const channel = await this.getAnyChannel(channelStorage, channelVarName, cache);
 
     if (Array.isArray(channel)) {
-      this.callListFunc(channel, "edit", [channelData, reason]).then(() =>
-        this.callNextAction(cache)
-      );
+      this.callListFunc(channel, "edit", [channelData, reason]).then(() => this.callNextAction(cache));
     } else if (channel?.edit) {
       channel
         .edit(channelData, reason)

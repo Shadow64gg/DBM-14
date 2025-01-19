@@ -58,9 +58,7 @@ module.exports = {
       "Member Timed Out At",
       "Member Timed Out Timestamp",
     ];
-    return `${presets.getMemberText(data.member, data.varName)} - ${
-      info[parseInt(data.info, 10)]
-    }`;
+    return `${presets.getMemberText(data.member, data.varName)} - ${info[parseInt(data.info, 10)]}`;
   },
 
   //---------------------------------------------------------------------
@@ -149,13 +147,7 @@ module.exports = {
         dataType = "Date";
         break;
       case 32:
-        dataType = "Boolean";
-        break;
-      case 33:
         dataType = "Timestamp";
-        break;
-      case 34:
-        dataType = "Text";
         break;
     }
     return [data.varName2, dataType];
@@ -171,14 +163,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: {
-    version: "3.2.4",
-    preciseCheck: true,
-    author: null,
-    authorUrl: null,
-    downloadUrl:
-      "https://github.com/Gotowka/mydbm/blob/v3/actions/store_member_info.js",
-  },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -203,55 +188,54 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-  <member-input dropdownLabel="Source Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
-  
-  <br><br><br>
-  
-  <div style="padding-top: 8px;">
-      <span class="dbminputlabel">Source Info</span><br>
-      <select id="info" class="round">
-          <option value="0" selected>Member Object</option>
-          <option value="1">Member ID</option>
-          <option value="2">Member Username</option>
-          <option value="3">Member Display Name</option>
-          <option value="34">Member GlobalName</option>
-          <option value="4">Member Color</option>
-          <option value="15">Member Status</option>
-          <option value="16">Member Avatar URL</option>
-          <option value="31">Member Server Avatar URL</option>
-          <option value="5">Member Server</option>
-          <option value="6">Member Last Message (Removed)</option>
-          <option value="26">Member Last Message Id (Removed)</option>
-          <option value="17">Member Role List</option>
-          <option value="7">Member Highest Role</option>
-          <option value="8">Member Hoist Role</option>
-          <option value="9">Member Color Role</option>
-          <option value="10">Member Is Owner?</option>
-          <option value="11">Member Is Muted?</option>
-          <option value="12">Member Is Deafened?</option>
-          <option value="13">Member Is Bannable?</option>
-          <option value="14">Member Playing Status Name</option>
-          <option value="30">Member Custom Status</option>
-          <option value="17">Member Roles List</option>
-          <option value="18">Member Roles Amount</option>
-          <option value="19">Member Voice Channel</option>
-          <option value="20">Member Discriminator</option>
-          <option value="21">Member Tag</option>
-          <option value="22">Member Created At</option>
-          <option value="23">Member Created Timestamp</option>
-          <option value="24">Member Joined At</option>
-          <option value="25">Member Joined Timestamp</option>
-          <option value="27">Member Permission List</option>
-          <option value="28">Member Flags List</option>
-          <option value="29">Member Client Status</option>
-          <option value="22">Member Timed Out At</option>
-          <option value="23">Member Timed Out Timestamp</option>
-      </select>
-  </div>
-  
-  <br>
-  
-  <store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
+<member-input dropdownLabel="Source Member" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+
+<br><br><br>
+
+<div style="padding-top: 8px;">
+	<span class="dbminputlabel">Source Info</span><br>
+	<select id="info" class="round">
+		<option value="0" selected>Member Object</option>
+		<option value="1">Member ID</option>
+		<option value="2">Member Username</option>
+		<option value="3">Member Display Name</option>
+		<option value="4">Member Color</option>
+		<option value="15">Member Status</option>
+		<option value="16">Member Avatar URL</option>
+		<option value="31">Member Server Avatar URL</option>
+		<option value="5">Member Server</option>
+		<option value="6">Member Last Message (Removed)</option>
+		<option value="26">Member Last Message Id (Removed)</option>
+		<option value="17">Member Role List</option>
+		<option value="7">Member Highest Role</option>
+		<option value="8">Member Hoist Role</option>
+		<option value="9">Member Color Role</option>
+		<option value="10">Member Is Owner?</option>
+		<option value="11">Member Is Muted?</option>
+		<option value="12">Member Is Deafened?</option>
+		<option value="13">Member Is Bannable?</option>
+		<option value="14">Member Playing Status Name</option>
+		<option value="30">Member Custom Status</option>
+		<option value="17">Member Roles List</option>
+		<option value="18">Member Roles Amount</option>
+		<option value="19">Member Voice Channel</option>
+		<option value="20">Member Discriminator</option>
+		<option value="21">Member Tag</option>
+		<option value="22">Member Created At</option>
+		<option value="23">Member Created Timestamp</option>
+		<option value="24">Member Joined At</option>
+		<option value="25">Member Joined Timestamp</option>
+		<option value="27">Member Permission List</option>
+		<option value="28">Member Flags List</option>
+		<option value="29">Member Client Status</option>
+		<option value="22">Member Timed Out At</option>
+		<option value="23">Member Timed Out Timestamp</option>
+	</select>
+</div>
+
+<br>
+
+<store-in-variable dropdownLabel="Store In" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
   },
 
   //---------------------------------------------------------------------
@@ -274,11 +258,7 @@ module.exports = {
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const member = await this.getMemberFromData(
-      data.member,
-      data.varName,
-      cache
-    );
+    const member = await this.getMemberFromData(data.member, data.varName, cache);
 
     if (!member) {
       this.callNextAction(cache);
@@ -330,42 +310,24 @@ module.exports = {
         break;
       case 14:
         if (member.presence?.activities.length) {
-          const status = member.presence.activities.filter(
-            (s) => s.type !== "CUSTOM"
-          );
+          const status = member.presence.activities.filter((s) => s.type !== "CUSTOM");
           result = status[0]?.name;
         }
         break;
       case 15:
         if (member.presence?.status) {
           const status = member.presence.status;
-          switch (status) {
-            case "online": {
-              result = "Online";
-              break;
-            }
-            case "offline": {
-              result = "Offline";
-              break;
-            }
-            case "idle": {
-              result = "Idle";
-              break;
-            }
-            case "dnd": {
-              result = "Do Not Disturb";
-              break;
-            }
+          switch(status) {
+            case "online": { result = "Online"; break; }
+            case "offline": { result = "Offline"; break; }
+            case "idle": { result = "Idle"; break; }
+            case "dnd": { result = "Do Not Disturb"; break; }
           }
         }
         break;
       case 16:
         if (member.user) {
-          result = member.user.displayAvatarURL({
-            dynamic: true,
-            format: "png",
-            size: 4096,
-          });
+          result = member.user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
         }
         break;
       case 17:
@@ -399,34 +361,23 @@ module.exports = {
         result = member.permissions.toArray();
         break;
       case 28:
-        result =
-          member.user?.flags?.toArray() ??
-          (await member.user?.fetchFlags())?.toArray();
+        result = member.user?.flags?.toArray() ?? (await member.user?.fetchFlags())?.toArray();
         break;
       case 29:
         const status = member.presence?.clientStatus;
         result = status && Object.keys(status);
         break;
       case 30:
-        result = member.presence?.activities.find(
-          (s) => s.type === "CUSTOM"
-        )?.state;
+        result = member.presence?.activities.find((s) => s.type === "CUSTOM")?.state;
         break;
       case 31:
-        result = member.displayAvatarURL({
-          dynamic: true,
-          format: "png",
-          size: 4096,
-        });
+        result = member.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
         break;
       case 32:
         result = member.communicationDisabledUntil;
         break;
       case 33:
         result = member.communicationDisabledUntilTimestamp;
-        break;
-      case 34:
-        result = member.user.globalName;
         break;
       default:
         break;

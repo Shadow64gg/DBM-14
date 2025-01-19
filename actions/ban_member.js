@@ -35,7 +35,7 @@ module.exports = {
   // This will make it so the patch version (0.0.X) is not checked.
   //---------------------------------------------------------------------
 
-  meta: { version: "3.2.4", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
+  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
 
   //---------------------------------------------------------------------
   // Action Fields
@@ -97,14 +97,14 @@ module.exports = {
     const data = cache.actions[cache.index];
     const member = await this.getMemberFromData(data.member, data.varName, cache);
     const reason = this.evalMessage(data.reason, cache);
-    const deleteMessageSeconds = parseInt(data.days, 10) * 86400 || 0;
+    const days = parseInt(data.days, 10) || 0;
     if (Array.isArray(member)) {
-      this.callListFunc(member, "ban", [{ deleteMessageSeconds, reason }])
+      this.callListFunc(member, "ban", [{ days, reason }])
         .then(() => this.callNextAction(cache))
         .catch((err) => this.displayError(data, cache, err));
     } else if (member?.ban) {
       member
-        .ban({ deleteMessageSeconds, reason })
+        .ban({ days, reason })
         .then(() => this.callNextAction(cache))
         .catch((err) => this.displayError(data, cache, err));
     } else {
