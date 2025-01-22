@@ -237,12 +237,12 @@ module.exports = {
               <div style="padding: 8px">
                 <div style="float: left; width: calc(50% - 12px);">
                   <span class="dbminputlabel">Title</span><br>
-                  <input id="title" class="round" type="text">
+                  <input id="title" class="round" type="text" placeholder="Leave blank for none...">
 
                   <br>
 
                   <span class="dbminputlabel">Color</span><br>
-                  <input id="color" class="round" type="text">
+                  <input id="color" class="round" type="text" placeholder="Leave blank for black...">
                 </div>
 
                 <div style="float: right; width: calc(50% - 12px);">
@@ -1017,26 +1017,21 @@ module.exports = {
         .edit(messageOptions)
         .then(onComplete)
         .catch((err) => this.displayError(data, cache, err));
-    } else if (data.reply === true && !canReply) {
-      if (cache.msg) {
-        cache.msg
-          .reply(messageOptions)
-          .then(onComplete)
-          .catch((err) => this.displayError(data, cache, err));
-      }
+    } else if (isMessageTarget && target?.reply) {
+      target
+        .reply(messageOptions)
+        .then(onComplete)
+        .catch((err) => this.displayError(data, cache, err));
     } else if (data.reply === true && canReply) {
       messageOptions.withResponse = true;
       if (data.ephemeral === true) {
-        // Zmieniamy to na
-        messageOptions.flags = 64; // Używamy flagi "ephemeral" zamiast przestarzałego `ephemeral: true`
+        messageOptions.flags = 64;
       }
       let promise = null;
       if (cache.interaction.deferred) {
         promise = cache.interaction.editReply(messageOptions);
       } else {
-        if (cache.interaction.replied)
-          promise = cache.interaction.followUp(messageOptions);
-        else promise = cache.interaction.reply(messageOptions);
+        promise = cache.interaction.reply(messageOptions);
       }
       promise
         .then(onComplete)
