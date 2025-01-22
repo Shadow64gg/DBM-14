@@ -1,6 +1,6 @@
 {
-  "name": "planeta-vipow-bot",
-  "author": "Shadow",
+  "name": "your-bot-name",
+  "author": "your-name",
   "main": "bot.js",
   "version": "2.1.7",
   "dependencies": {
