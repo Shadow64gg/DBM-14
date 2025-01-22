@@ -740,8 +740,18 @@ module.exports = {
         if (embedData.title)
           embed.setTitle(this.evalMessage(embedData.title, cache));
         if (embedData.url) embed.setURL(this.evalMessage(embedData.url, cache));
-        if (embedData.color)
-          embed.setColor(this.evalMessage(embedData.color, cache));
+        if (embedData.color) {
+          const { Colors } = require("discord.js");
+          const color = this.evalMessage(embedData.color, cache);
+
+          const colorKey =
+            color.charAt(0).toUpperCase() + color.slice(1).toLowerCase();
+
+          const validColor = Colors[colorKey] || color;
+
+          embed.setColor(validColor);
+        }
+
         if (embedData.timestamp === "true") embed.setTimestamp();
         if (embedData.imageUrl)
           embed.setImage(this.evalMessage(embedData.imageUrl, cache));
