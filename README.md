@@ -15,9 +15,9 @@ Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
 
 | Pakiet    |                                                        Linki Do Pobrania                                                         |
 | ---------- | :--------------------------------------------------------------------------------------------------------------------------: |
-| Actions    |  [Pobierz](aktualnie-niedostępne)   |
-| Events     |   [Pobierz](aktualnie-niedostępne)   |
-| Extensions | [Pobierz](aktualnie-niedostępne) |
+| Actions    |  [Pobierz](https://dbm-network.github.io/download-git/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/main/actions)   |
+| Events     |   [Pobierz](https://dbm-network.github.io/download-git/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/main/events)   |
+| Extensions | [Pobierz](https://dbm-network.github.io/download-git/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/main/extensions) |
 | Raw Data | [Pobierz](aktualnie-niedostępne) |
 
 2.  Na górnym pasku Discord Bot Maker kliknij Project → Open Project Directory (otworzy się folder twojego bota)
