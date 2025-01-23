@@ -20,7 +20,7 @@ Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
 | Extensions | [Pobierz](aktualnie-niedostępne) |
 | Raw Data | [Pobierz](aktualnie-niedostępne) |
 
-2.  Otwórz folder główny swojego bota discord.
+2.  Na górnym pasku Discord Bot Maker kliknij Project → Open Project Directory (otworzy się folder twojego bota)
 3.  Wyodrębnij zawartość pliku .zip oraz wrzuć mody do odpowiedniego folderu
     (Zastąp istniejące pliki, jeśli zostaniesz o to poproszony)
 
