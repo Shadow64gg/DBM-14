@@ -1,22 +1,28 @@
 module.exports = {
-  name: 'Canvas Draw Image on Image',
-  section: 'Image Editing',
+  name: "Canvas Draw Image on Image",
+  section: "Image Editing",
   meta: {
-    version: '3.2.4',
+    version: "3.2.4",
     preciseCheck: false,
-    author: 'DBM Mods',
-    authorUrl: 'https://github.com/dbm-network/mods',
-    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/canvas_draw_image_MOD.js',
+    author: "DBM Mods",
+    authorUrl: "https://github.com/dbm-network/mods",
+    downloadURL:
+      "https://github.com/dbm-network/mods/blob/master/actions/canvas_draw_image_MOD.js",
   },
 
   subtitle(data) {
-    const storeTypes = ['', 'Temp Variable', 'Server Variable', 'Global Variable'];
+    const storeTypes = [
+      "",
+      "Temp Variable",
+      "Server Variable",
+      "Global Variable",
+    ];
     return `${storeTypes[parseInt(data.storage2, 10)]} (${data.varName2}) -> ${
       storeTypes[parseInt(data.storage, 10)]
     } (${data.varName})`;
   },
 
-  fields: ['storage', 'varName', 'storage2', 'varName2', 'x', 'y', 'effect'],
+  fields: ["storage", "varName", "storage2", "varName2", "x", "y", "effect"],
 
   html() {
     return `
@@ -51,12 +57,14 @@ module.exports = {
   init() {
     const { glob, document } = this;
 
-    glob.refreshVariableList(document.getElementById('storage'));
+    glob.refreshVariableList(document.getElementById("storage"));
   },
 
   async action(cache) {
-    const Canvas = require('canvas');
+    const Canvas = require("canvas");
+    const { loadImage } = Canvas;
     const data = cache.actions[cache.index];
+
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
     const imagedata = this.getVariable(storage, varName, cache);
@@ -67,22 +75,29 @@ module.exports = {
     const imagedata2 = this.getVariable(storage2, varName2, cache);
     if (!imagedata2) return this.callNextAction(cache);
 
-    const x = parseInt(this.evalMessage(data.x, cache), 10);
-    const y = parseInt(this.evalMessage(data.y, cache), 10);
-    const effect = parseInt(data.effect, 10);
-    const image = new Canvas.Image();
-    image.src = imagedata;
-    const image2 = new Canvas.Image();
-    image2.src = imagedata2;
-    const canvas = Canvas.createCanvas(image.width, image.height);
-    const ctx = canvas.getContext('2d');
+    try {
+      const image = await loadImage(imagedata);
+      const image2 = await loadImage(imagedata2);
 
-    ctx.drawImage(image, 0, 0, image.width, image.height);
-    if (effect === 1) ctx.globalCompositeOperation = 'destination-out';
-    ctx.drawImage(image2, x, y, image2.width, image2.height);
+      const x = parseInt(this.evalMessage(data.x, cache), 10);
+      const y = parseInt(this.evalMessage(data.y, cache), 10);
+      const effect = parseInt(data.effect, 10);
 
-    const result = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-    this.storeValue(result, storage, varName, cache);
+      const canvas = Canvas.createCanvas(image.width, image.height);
+      const ctx = canvas.getContext("2d");
+
+      ctx.drawImage(image, 0, 0, image.width, image.height);
+      if (effect === 1) ctx.globalCompositeOperation = "destination-out";
+      ctx.drawImage(image2, x, y, image2.width, image2.height);
+
+      const result = canvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+      this.storeValue(result, storage, varName, cache);
+    } catch (error) {
+      console.error("Error loading or processing images:", error);
+    }
+
     this.callNextAction(cache);
   },
 
