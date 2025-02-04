@@ -1,0 +1,223 @@
+{
+  "name": "giveaway create",
+  "permissions": "ADMINISTRATOR",
+  "permissions2": "NONE",
+  "restriction": "1",
+  "_id": "bXuus",
+  "actions": [
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "",
+      "buttons": [],
+      "selectMenus": [],
+      "attachments": [],
+      "embeds": [
+        {
+          "title": "",
+          "url": "",
+          "color": "",
+          "timestamp": "false",
+          "imageUrl": "",
+          "thumbUrl": "",
+          "description": "**Tworzenie Giveaway!**",
+          "fields": [],
+          "author": "",
+          "authorUrl": "",
+          "authorIcon": "",
+          "footerText": "",
+          "footerIconUrl": ""
+        }
+      ],
+      "reply": true,
+      "ephemeral": false,
+      "dontReply": false,
+      "tts": false,
+      "overwrite": false,
+      "dontSend": false,
+      "editMessage": "0",
+      "editMessageVarName": "",
+      "storage": "1",
+      "varName2": "message1",
+      "name": "Send Message"
+    },
+    {
+      "message": "1",
+      "varName": "message1",
+      "info": "1",
+      "storage": "1",
+      "varName2": "message_id",
+      "name": "Store Message Info"
+    },
+    {
+      "time": "${slashParams(\"czas\")}",
+      "winners": "${slashParams(\"zwycięzcy\")}",
+      "prize": "${slashParams(\"nagroda\")}",
+      "msgid": "${tempVars(\"message_id\")}",
+      "storage": "1",
+      "varName": "giveaway_id",
+      "name": "Giveaway Create"
+    },
+    {
+      "giveawayId": "${tempVars(\"giveaway_id\")}",
+      "info": "host",
+      "storage": "1",
+      "varName": "host",
+      "name": "Giveaway Info"
+    },
+    {
+      "giveawayId": "${tempVars(\"giveaway_id\")}",
+      "info": "endRelative",
+      "storage": "1",
+      "varName": "end_time",
+      "name": "Giveaway Info"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "",
+      "buttons": [
+        {
+          "name": "🎉",
+          "type": "3",
+          "id": "msg-button-ab712c4",
+          "row": "",
+          "url": "",
+          "emoji": "",
+          "mode": "MULTI",
+          "time": "",
+          "actions": [
+            {
+              "member": "1",
+              "varName": "",
+              "giveawayId": "${tempVars(\"giveaway_id\")}",
+              "branch": {
+                "iftrue": "99",
+                "iffalse": "99",
+                "iftrueActions": [
+                  {
+                    "member": "1",
+                    "varName": "",
+                    "giveawayid": "${tempVars(\"giveaway_id\")}",
+                    "name": "Giveaway Leave"
+                  },
+                  {
+                    "channel": "0",
+                    "varName": "",
+                    "message": "Pomyślnie wyszedłeś z giveaway!",
+                    "buttons": [],
+                    "selectMenus": [],
+                    "attachments": [],
+                    "embeds": [],
+                    "reply": true,
+                    "ephemeral": true,
+                    "dontReply": false,
+                    "tts": false,
+                    "overwrite": false,
+                    "dontSend": false,
+                    "editMessage": "0",
+                    "editMessageVarName": "",
+                    "storage": "0",
+                    "varName2": "",
+                    "name": "Send Message"
+                  }
+                ],
+                "iffalseActions": [
+                  {
+                    "member": "1",
+                    "varName": "",
+                    "giveawayid": "${tempVars(\"giveaway_id\")}",
+                    "name": "Giveaway Join"
+                  },
+                  {
+                    "channel": "0",
+                    "varName": "",
+                    "message": "Pomyślnie dołączyłeś do giveaway!",
+                    "buttons": [],
+                    "selectMenus": [],
+                    "attachments": [],
+                    "embeds": [],
+                    "reply": true,
+                    "ephemeral": true,
+                    "dontReply": false,
+                    "tts": false,
+                    "overwrite": false,
+                    "dontSend": false,
+                    "editMessage": "0",
+                    "editMessageVarName": "",
+                    "storage": "0",
+                    "varName2": "",
+                    "name": "Send Message"
+                  }
+                ]
+              },
+              "name": "Giveaway Check If Member"
+            }
+          ]
+        }
+      ],
+      "selectMenus": [],
+      "attachments": [],
+      "embeds": [
+        {
+          "title": "${slashParams(\"nagroda\")}",
+          "url": "",
+          "color": "",
+          "timestamp": "false",
+          "imageUrl": "",
+          "thumbUrl": "",
+          "description": "> **Host:** ${tempVars(\"host\")}\n> **Koniec:** ${tempVars(\"end_time\")}\n> **Opis:** ${slashParams(\"opis\")}",
+          "fields": [],
+          "author": "",
+          "authorUrl": "",
+          "authorIcon": "",
+          "footerText": "",
+          "footerIconUrl": ""
+        }
+      ],
+      "reply": true,
+      "ephemeral": false,
+      "dontReply": false,
+      "tts": false,
+      "overwrite": false,
+      "dontSend": false,
+      "editMessage": "intUpdate",
+      "editMessageVarName": "",
+      "storage": "0",
+      "varName2": "",
+      "name": "Send Message"
+    }
+  ],
+  "comType": "4",
+  "parameters": [
+    {
+      "name": "czas",
+      "description": "1s / 1m / 1h / 1d / 1M / 1Y",
+      "type": "STRING",
+      "required": true,
+      "choices": null
+    },
+    {
+      "name": "zwycięzcy",
+      "description": "Ile osób ma wygrać.",
+      "type": "INTEGER",
+      "required": true,
+      "choices": null
+    },
+    {
+      "name": "nagroda",
+      "description": "Jaka ma byc nagroda.",
+      "type": "STRING",
+      "required": true,
+      "choices": null
+    },
+    {
+      "name": "opis",
+      "description": "Możesz opisać giveaway.",
+      "type": "STRING",
+      "required": true,
+      "choices": null
+    }
+  ],
+  "description": "Użyj aby stworzyć giveaway."
+}
