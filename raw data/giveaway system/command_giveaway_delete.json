@@ -12,7 +12,7 @@
     {
       "channel": "0",
       "varName": "",
-      "message": "Pomyślnie usunąłeś giveaway!",
+      "message": "You have successfully removed the giveaway!",
       "buttons": [],
       "selectMenus": [],
       "attachments": [],
@@ -34,11 +34,11 @@
   "parameters": [
     {
       "name": "ID",
-      "description": "Wpisz ID giveaway.",
+      "description": "Enter giveaway ID.",
       "type": "STRING",
       "required": true,
       "choices": null
     }
   ],
-  "description": "Użyj aby usunąć giveaway"
+  "description": "Use to remove giveaway"
 }

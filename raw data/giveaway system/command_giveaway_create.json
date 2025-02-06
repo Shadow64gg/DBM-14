@@ -20,7 +20,7 @@
           "timestamp": "false",
           "imageUrl": "",
           "thumbUrl": "",
-          "description": "**Tworzenie Giveaway!**",
+          "description": "**Giveaway is being created!**",
           "fields": [],
           "author": "",
           "authorUrl": "",
@@ -42,6 +42,22 @@
       "name": "Send Message"
     },
     {
+      "server": "0",
+      "varName": "",
+      "info": "2",
+      "storage": "1",
+      "varName2": "server_name",
+      "name": "Store Server Info"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "info": "5",
+      "storage": "1",
+      "varName2": "server_icon",
+      "name": "Store Server Info"
+    },
+    {
       "message": "1",
       "varName": "message1",
       "info": "1",
@@ -50,15 +66,17 @@
       "name": "Store Message Info"
     },
     {
-      "time": "${slashParams(\"czas\")}",
-      "winners": "${slashParams(\"zwycięzcy\")}",
-      "prize": "${slashParams(\"nagroda\")}",
+      "time": "${slashParams(\"time\")}",
+      "winners": "${slashParams(\"winners\")}",
+      "prize": "${slashParams(\"prize\")}",
       "msgid": "${tempVars(\"message_id\")}",
+      "description": "${slashParams(\"description\")}",
       "storage": "1",
       "varName": "giveaway_id",
       "name": "Giveaway Create"
     },
     {
+      "sourceGiveaway": "byId",
       "giveawayId": "${tempVars(\"giveaway_id\")}",
       "info": "host",
       "storage": "1",
@@ -66,10 +84,25 @@
       "name": "Giveaway Info"
     },
     {
+      "sourceGiveaway": "byId",
       "giveawayId": "${tempVars(\"giveaway_id\")}",
       "info": "endRelative",
       "storage": "1",
       "varName": "end_time",
+      "name": "Giveaway Info"
+    },
+    {
+      "sourceGiveaway": "byId",
+      "giveawayId": "${tempVars(\"giveaway_id\")}",
+      "info": "description",
+      "noParticipantsText": "No Participants",
+      "noWinnersYetText": "No Winners Yet",
+      "noWinnersText": "No Winners",
+      "noDescriptionText": "No Description",
+      "endedStatus1Text": "🟢",
+      "endedStatus2Text": "🔴",
+      "storage": "1",
+      "varName": "description",
       "name": "Giveaway Info"
     },
     {
@@ -84,13 +117,27 @@
           "row": "",
           "url": "",
           "emoji": "",
-          "mode": "MULTI",
+          "mode": "PERSISTENT",
           "time": "",
           "actions": [
             {
+              "sourceGiveaway": "current",
+              "giveawayId": "",
+              "info": "id",
+              "noParticipantsText": "No Participants",
+              "noWinnersYetText": "No Winners Yet",
+              "noWinnersText": "No Winners",
+              "noDescriptionText": "No Description",
+              "endedStatus1Text": "🟢",
+              "endedStatus2Text": "🔴",
+              "storage": "1",
+              "varName": "G_ID",
+              "name": "Giveaway Info"
+            },
+            {
               "member": "1",
               "varName": "",
-              "giveawayId": "${tempVars(\"giveaway_id\")}",
+              "giveawayId": "${tempVars(\"G_ID\")}",
               "branch": {
                 "iftrue": "99",
                 "iffalse": "99",
@@ -98,13 +145,13 @@
                   {
                     "member": "1",
                     "varName": "",
-                    "giveawayid": "${tempVars(\"giveaway_id\")}",
+                    "giveawayid": "${tempVars(\"G_ID\")}",
                     "name": "Giveaway Leave"
                   },
                   {
                     "channel": "0",
                     "varName": "",
-                    "message": "Pomyślnie wyszedłeś z giveaway!",
+                    "message": "You have successfully exited the giveaway!",
                     "buttons": [],
                     "selectMenus": [],
                     "attachments": [],
@@ -126,13 +173,13 @@
                   {
                     "member": "1",
                     "varName": "",
-                    "giveawayid": "${tempVars(\"giveaway_id\")}",
+                    "giveawayid": "${tempVars(\"G_ID\")}",
                     "name": "Giveaway Join"
                   },
                   {
                     "channel": "0",
                     "varName": "",
-                    "message": "Pomyślnie dołączyłeś do giveaway!",
+                    "message": "You have successfully joined the giveaway!",
                     "buttons": [],
                     "selectMenus": [],
                     "attachments": [],
@@ -160,19 +207,19 @@
       "attachments": [],
       "embeds": [
         {
-          "title": "${slashParams(\"nagroda\")}",
+          "title": "${slashParams(\"prize\")}",
           "url": "",
           "color": "",
           "timestamp": "false",
           "imageUrl": "",
           "thumbUrl": "",
-          "description": "> **Host:** ${tempVars(\"host\")}\n> **Koniec:** ${tempVars(\"end_time\")}\n> **Opis:** ${slashParams(\"opis\")}",
+          "description": "> **Host:** ${tempVars(\"host\")}\n> **End:** ${tempVars(\"end_time\")}\n> **Description:** ${tempVars(\"description\")}",
           "fields": [],
           "author": "",
           "authorUrl": "",
           "authorIcon": "",
-          "footerText": "",
-          "footerIconUrl": ""
+          "footerText": "${tempVars(\"server_name\")}",
+          "footerIconUrl": "${tempVars(\"server_icon\")}"
         }
       ],
       "reply": true,
@@ -191,33 +238,33 @@
   "comType": "4",
   "parameters": [
     {
-      "name": "czas",
+      "name": "time",
       "description": "1s / 1m / 1h / 1d / 1M / 1Y",
       "type": "STRING",
       "required": true,
       "choices": null
     },
     {
-      "name": "zwycięzcy",
-      "description": "Ile osób ma wygrać.",
+      "name": "winners",
+      "description": "How many people are expected to win.",
       "type": "INTEGER",
       "required": true,
       "choices": null
     },
     {
-      "name": "nagroda",
-      "description": "Jaka ma byc nagroda.",
+      "name": "prize",
+      "description": "What will the reward be?",
       "type": "STRING",
       "required": true,
       "choices": null
     },
     {
-      "name": "opis",
-      "description": "Możesz opisać giveaway.",
+      "name": "description",
+      "description": "Can you describe the giveaway.",
       "type": "STRING",
-      "required": true,
+      "required": false,
       "choices": null
     }
   ],
-  "description": "Użyj aby stworzyć giveaway."
+  "description": "Use to create a giveaway."
 }

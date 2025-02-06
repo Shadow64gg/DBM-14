@@ -14,7 +14,7 @@
     {
       "channel": "0",
       "varName": "",
-      "message": "Nowi zwycięzcy: ${tempVars(\"winners\")}!",
+      "message": "New winners: ${tempVars(\"winners\")}!",
       "buttons": [],
       "selectMenus": [],
       "attachments": [],
@@ -36,11 +36,11 @@
   "parameters": [
     {
       "name": "ID",
-      "description": "Wpisz ID giveaway.",
+      "description": "Enter giveaway ID.",
       "type": "STRING",
       "required": true,
       "choices": null
     }
   ],
-  "description": "Użyj aby wylosować nowego zwycięzcę."
+  "description": "Use to draw a new winner."
 }
