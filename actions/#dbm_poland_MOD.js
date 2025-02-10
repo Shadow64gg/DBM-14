@@ -88,6 +88,16 @@ module.exports = {
     </thead>
     <tbody>
 
+    <tr style="border-bottom: 20px solid #003ab8;">
+    </tr>
+    <tr style="border-bottom: 10px solid #003ab8;">
+     <td style="padding: 10px;"></td>
+     <td style="padding: 20px;">ACTIONS</td>
+     <td style="padding: 10px;"></td>
+    </tr>
+
+
+
       <tr style="border-bottom: 1px solid #444;">
         <td style="padding: 10px;">Generate</td>
         <td style="padding: 10px;">Economy</td>
@@ -267,7 +277,34 @@ module.exports = {
         <td style="padding: 10px;">Other Stuff</td>
         <td style="padding: 10px;">Shadow</td>
       </tr>
-            
+
+
+
+
+
+
+
+
+
+      
+      <tr style="border-bottom: 10px solid #003ab8;">
+    </tr>
+    <tr style="border-bottom: 10px solid #003ab8;">
+     <td style="padding: 10px;"></td>
+     <td style="padding: 20px;">EVENTS</td>
+     <td style="padding: 10px;"></td>
+    </tr>
+      
+    
+
+
+
+    <tr style="border-bottom: 5px solid #444;">
+        <td style="padding: 10px;">Invite Logger</td>
+        <td style="padding: 10px;"></td>
+        <td style="padding: 10px;">Shadow</td>
+      </tr>
+
     </tbody>
   </table>
 </div>
