@@ -1,6 +1,7 @@
 module.exports = {
   name: "Top Members",
   section: "Economy",
+
   subtitle(data, presets) {
     return `Top ${data.topCount || 5} members (${data.dataName})`;
   },
@@ -20,107 +21,111 @@ module.exports = {
     "useNumbers",
     "showValues",
     "suffix",
+    "suffix2",
+    "suffix3",
+    "suffix4",
     "filterBots",
     "reversedOrder",
     "boldNumbers",
     "boldData",
-    "boldSuffix",
     "italicNumbers",
     "italicData",
-    "italicSuffix",
     "strikethroughNumbers",
     "strikethroughData",
-    "strikethroughSuffix",
     "codeNumbers",
     "codeData",
-    "codeSuffix",
+    "boldNick",
+    "italicNick",
+    "strikethroughNick",
+    "codeNick",
     "usePrefix",
     "enableRankingTitle",
     "rankingTitle",
     "storage",
     "varName",
   ],
+
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1" style="height: 59px">
-    <p>Mod Info:</p>
-    <p>Created by Shadow</p>
-    <p>
-      Help:
-      <a
-        href="https://discord.gg/9HYB4n3Dz4"
-        target="_blank"
-        style="color: #0077ff; text-decoration: none"
-        >discord</a
-      >
-    </p>
-  </div>
-  
-  <div class="dbmmodsbr dbmmodsbr2">
-    <p>Mod Version:</p>
-    <p>
-      <a
-        href="https://github.com/Shadow64gg/DBM-14"
-        target="_blank"
-        style="color: #0077ff; text-decoration: none"
-        >2.0</a
-      >
-    </p>
-  </div>
-  
-  <style>
-    .dbmmodsbr1,
-    .dbmmodsbr2 {
-      position: absolute;
-      bottom: 0px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #999;
-      padding: 5px;
-      font-size: 12px;
-      z-index: 999999;
-      cursor: pointer;
-      line-height: 1.2;
-      border-radius: 8px;
-      transition: transform 0.3s ease, background-color 0.6s ease, color 0.6s ease;
-    }
-  
-    .dbmmodsbr1 {
-      left: 0px;
-      border: 2px solid rgba(50, 50, 50, 0.7);
-    }
-  
-    .dbmmodsbr2 {
-      right: 0px;
-      text-align: center;
-    }
-  
-    .dbmmodsbr1:hover,
-    .dbmmodsbr2:hover {
-      transform: scale(1.01);
-      background-color: rgba(29, 29, 29, 0.9);
-      color: #fff;
-    }
-  
-    .dbmmodsbr1 p,
-    .dbmmodsbr2 p {
-      margin: 0;
-      padding: 0;
-    }
-  
-    .dbmmodsbr1 a,
-    .dbmmodsbr2 a {
-      font-size: 12px;
-      color: #0077ff;
-      text-decoration: none;
-    }
-  
-    .dbmmodsbr1 a:hover,
-    .dbmmodsbr2 a:hover {
-      text-decoration: underline;
-    }
-  </style>
-  
-    
+  <p>Mod Info:</p>
+  <p>Created by Shadow</p>
+  <p>
+    Help:
+    <a
+      href="https://discord.gg/9HYB4n3Dz4"
+      target="_blank"
+      style="color: #0077ff; text-decoration: none"
+      >discord</a
+    >
+  </p>
+</div>
+
+<div class="dbmmodsbr dbmmodsbr2">
+  <p>Mod Version:</p>
+  <p>
+    <a
+      href="https://github.com/Shadow64gg/DBM-14"
+      target="_blank"
+      style="color: #0077ff; text-decoration: none"
+      >2.1</a
+    >
+  </p>
+</div>
+
+<style>
+  .dbmmodsbr1,
+  .dbmmodsbr2 {
+    position: absolute;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #999;
+    padding: 5px;
+    font-size: 12px;
+    z-index: 999999;
+    cursor: pointer;
+    line-height: 1.2;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.6s ease, color 0.6s ease;
+  }
+
+  .dbmmodsbr1 {
+    left: 0px;
+    border: 2px solid rgba(50, 50, 50, 0.7);
+  }
+
+  .dbmmodsbr2 {
+    right: 0px;
+    text-align: center;
+  }
+
+  .dbmmodsbr1:hover,
+  .dbmmodsbr2:hover {
+    transform: scale(1.01);
+    background-color: rgba(29, 29, 29, 0.9);
+    color: #fff;
+  }
+
+  .dbmmodsbr1 p,
+  .dbmmodsbr2 p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dbmmodsbr1 a,
+  .dbmmodsbr2 a {
+    font-size: 12px;
+    color: #0077ff;
+    text-decoration: none;
+  }
+
+  .dbmmodsbr1 a:hover,
+  .dbmmodsbr2 a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+      
 <tab-system>
   <tab label="General" icon="cogs">
     <div style="display: flex; gap: 10px; padding: 10px;">
@@ -168,17 +173,34 @@ module.exports = {
       </div>
     </div>
 
-    <div style="padding: 10px;">
-      <span class="dbminputlabel">Suffix</span><br>
-      <input id="suffix" class="round" type="text" placeholder="Leave blank for none...">
-    </div>
-    
+    <div style="display: flex; gap: 10px; padding: 10px;">
+  <div style="flex: 1;">
+    <span class="dbminputlabel">Text 1</span><br>
+    <input id="suffix" class="round" type="text" placeholder="Leave blank for none...">
+  </div>
+
+  <div style="flex: 1;">
+    <span class="dbminputlabel">Text 2</span><br>
+    <input id="suffix2" class="round" type="text" placeholder="Leave blank for none...">
+  </div>
+
+  <div style="flex: 1;">
+    <span class="dbminputlabel">Text 3</span><br>
+    <input id="suffix3" class="round" type="text" placeholder="Leave blank for none...">
+  </div>
+
+  <div style="flex: 1;">
+    <span class="dbminputlabel">Text 4</span><br>
+    <input id="suffix4" class="round" type="text" placeholder="Leave blank for none...">
+  </div>
+</div>
+
     <div style="display: flex; gap: 10px; padding: 10px;">
       <div style="flex: 1;">
          <span class="dbminputlabel">Filter Bots</span><br>
          <select id="filterBots" class="round">
-            <option value="true" selected>Yes</option>
-            <option value="false">No</option>
+            <option value="true">Yes</option>
+            <option value="false" selected>No</option>
          </select>
       </div>
     </div>
@@ -228,22 +250,28 @@ module.exports = {
       <dbm-checkbox id="codeData" label="Data Value (Code)"></dbm-checkbox>
     </div>
 
+
     <div style="flex: 1;">
-      <dbm-checkbox id="boldSuffix" label="Suffix (Bold)" style="margin-bottom: 10px;"></dbm-checkbox>
-      <dbm-checkbox id="italicSuffix" label="Suffix (Italic)" style="margin-bottom: 10px;"></dbm-checkbox>
-      <dbm-checkbox id="strikethroughSuffix" label="Suffix (Strike)" style="margin-bottom: 10px;"></dbm-checkbox>
-      <dbm-checkbox id="codeSuffix" label="Suffix (Code)"></dbm-checkbox>
-    </div>
+  <dbm-checkbox id="boldNick" label="Nickname (Bold)" style="margin-bottom: 10px;"></dbm-checkbox>
+  <dbm-checkbox id="italicNick" label="Nickname (Italic)" style="margin-bottom: 10px;"></dbm-checkbox>
+  <dbm-checkbox id="strikethroughNick" label="Nickname (Strike)" style="margin-bottom: 10px;"></dbm-checkbox>
+  <dbm-checkbox id="codeNick" label="Nickname (Code)"></dbm-checkbox>
+</div>
+
+
+    
   </div>
 </tab>
 
     `;
   },
+
   variableStorage(data, varType) {
     const storageType = parseInt(data.storage, 10);
     if (storageType !== varType) return;
-    return [data.varName, "Text"];
+    return [data.varName, "Top Members"];
   },
+
   async action(cache) {
     const fs = require("fs");
     const path = require("path");
@@ -266,7 +294,17 @@ module.exports = {
       : "";
 
     const suffix = this.evalMessage(data.suffix, cache) || "";
+    const suffix2 = this.evalMessage(data.suffix2, cache) || "";
+    const formattedSuffix2 = suffix2 ? `${suffix2} ` : "";
+    const suffix3 = this.evalMessage(data.suffix3, cache) || "";
+    const formattedSuffix3 = suffix3 ? ` ${suffix3}` : "";
+    const suffix4 = this.evalMessage(data.suffix4, cache) || "";
+    const formattedSuffix4 = suffix4 ? ` ${suffix4}` : "";
 
+    const boldNick = Boolean(data.boldNick);
+    const italicNick = Boolean(data.italicNick);
+    const strikethroughNick = Boolean(data.strikethroughNick);
+    const codeNick = Boolean(data.codeNick);
     const boldNumbers = Boolean(data.boldNumbers);
     const boldData = Boolean(data.boldData);
     const boldSuffix = Boolean(data.boldSuffix);
@@ -329,6 +367,7 @@ module.exports = {
       let number = useNumbers ? `${index + 1}. ` : "";
       let value = showValues ? `${data[dataName]}` : "";
       let formattedSuffix = suffix ? ` ${suffix}` : "";
+      let formattedNick = `<@${userId}>`;
 
       if (boldNumbers && useNumbers) number = `**${number}**`;
       if (boldData && showValues) value = `**${value}**`;
@@ -346,7 +385,12 @@ module.exports = {
       if (codeData && showValues) value = `\`${value}\``;
       if (codeSuffix && suffix) formattedSuffix = ` \`${suffix}\``;
 
-      response += `${prefix}${number}<@${userId}> ${value}${formattedSuffix}\n`;
+      if (boldNick) formattedNick = `**${formattedNick}**`;
+      if (italicNick) formattedNick = `*${formattedNick}*`;
+      if (strikethroughNick) formattedNick = `~~${formattedNick}~~`;
+      if (codeNick) formattedNick = `\`${formattedNick}\``;
+
+      response += `${formattedSuffix} ${prefix}${number}${formattedSuffix2}${formattedNick} ${formattedSuffix3} ${value}${formattedSuffix4}\n`;
     });
 
     if (response === "\n") {
