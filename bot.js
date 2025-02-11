@@ -682,6 +682,9 @@ Bot.validateSlashCommandParameterType = function (type) {
     case "ROLE":
       resul = 8;
       break;
+    case "USER_AND_ROLE": // Dodanie dla User & Role
+      resul = 9;
+      break;
     case "ATTACHMENT":
       resul = 11;
       break;
@@ -1808,6 +1811,7 @@ Actions.checkConditions = function (guild, member, user, cmd) {
     REQUEST_TO_SPEAK: 0x100000000n,
     MANAGE_THREADS: 0x400000000n,
     MANAGE_EVENTS: 8589934592n,
+    VIEW_EVENTS: 0x20000000000n,
   };
 
   const convertPermissions = (permissions) => {
