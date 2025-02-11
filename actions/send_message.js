@@ -16,6 +16,16 @@ module.exports = {
   section: "Messaging",
 
   //---------------------------------------------------------------------
+  // Action Size
+  //
+  // This function sets the size of the action window.
+  //---------------------------------------------------------------------
+
+  size: function () {
+    return { width: 580, height: 550 };
+  },
+
+  //---------------------------------------------------------------------
   // Action Subtitle
   //
   // This function generates the subtitle displayed next to the name.
