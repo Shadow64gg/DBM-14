@@ -105,43 +105,31 @@ module.exports = {
       </tr>
 
       <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Top Members Economy</td>
-        <td style="padding: 10px;">Economy</td>
-        <td style="padding: 10px;">Shadow</td>
-      </tr>
-
-      <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Balance Member Money</td>
-        <td style="padding: 10px;">Economy</td>
-        <td style="padding: 10px;">Shadow</td>
-      </tr>
-
-      <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Check Member Money</td>
-        <td style="padding: 10px;">Economy</td>
-        <td style="padding: 10px;">Shadow</td>
-      </tr>
-
-      <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Manage Member Money</td>
-        <td style="padding: 10px;">Economy</td>
-        <td style="padding: 10px;">Shadow</td>
-      </tr>
-
-      <tr style="border-bottom: 1px solid #444;">
         <td style="padding: 10px;">Level System</td>
         <td style="padding: 10px;">Economy</td>
         <td style="padding: 10px;">Shadow</td>
       </tr>
 
       <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Store Member Level</td>
+        <td style="padding: 10px;">Check Member Level</td>
         <td style="padding: 10px;">Economy</td>
         <td style="padding: 10px;">Shadow</td>
       </tr>
 
       <tr style="border-bottom: 1px solid #444;">
-        <td style="padding: 10px;">Manage Member Level</td>
+        <td style="padding: 10px;">Control Member Level</td>
+        <td style="padding: 10px;">Economy</td>
+        <td style="padding: 10px;">Shadow</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #444;">
+        <td style="padding: 10px;">Delete Member Level</td>
+        <td style="padding: 10px;">Economy</td>
+        <td style="padding: 10px;">Shadow</td>
+      </tr>
+
+      <tr style="border-bottom: 1px solid #444;">
+        <td style="padding: 10px;">Store Member Level</td>
         <td style="padding: 10px;">Economy</td>
         <td style="padding: 10px;">Shadow</td>
       </tr>
