@@ -46,6 +46,5 @@ Poniżej masz instrukcję jak pobrać/zaktualizować bota z v13 na v14.
 4.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
 
 Gotowe! już masz bota na najnowszej wersji discord.js!
+Możesz także zaktualizować już istniejącego bota ale możliwe że będziesz musiał ustawić na nowo dużo rzeczy.
 Potrzebujesz więcej akcji, eventów lub innych dodatków? Cofnij się do "Instrukcja 1".
-
-**Będziesz musiał powtórzyć ten proces dla wszystkich swoich projektów**
