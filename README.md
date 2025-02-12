@@ -43,10 +43,11 @@ Aby zainstalować rozszerzenia, musisz przenieść plik .js z folderu rozszerze�
 Poniżej masz instrukcję jak pobrać/zaktualizować bota z v13 na v14.
 
 1.  Pobierz najnowszą wersję [node.js](https://nodejs.org/en) (np. v22).
-2.  Wejdź w DBM → Settings → Editor Settings (wyłącz wszystkie opcje oprócz "Allow Action Dialog Resizing").
-3.  Pobierz pakiet "Bot Files".
-4.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
-5.  (Opcjonalnie) Możesz także pobrać zaktualizowane pliki programu DBM, Da ci to dostęp do kilku dodatkowych nowych funkcji.
+2.  Zaktualizuj node.js w DBM, pliki z tąd `C:\Program Files\nodejs` skopiuj tu `C:\SteamLibrary\steamapps\common\Discord Bot Maker\resources\app\nodejs`
+3.  Wejdź w DBM → Settings → Editor Settings (wyłącz wszystkie opcje oprócz "Allow Action Dialog Resizing").
+4.  Pobierz pakiet "Bot Files".
+5.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
+6.  (Opcjonalnie) Możesz także pobrać zaktualizowane pliki programu DBM, Da ci to dostęp do kilku dodatkowych nowych funkcji.
 
 Gotowe! już masz bota na najnowszej wersji discord.js!
 Możesz także zaktualizować już istniejącego bota ale możliwe że będziesz musiał ustawić na nowo dużo rzeczy.
