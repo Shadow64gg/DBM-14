@@ -44,6 +44,7 @@ Poniżej masz instrukcję jak pobrać/zaktualizować bota z v13 na v14.
 2.  Wejdź w DBM → Settings → Editor Settings (wyłącz wszystkie opcje oprócz "Allow Action Dialog Resizing").
 3.  Pobierz pakiet "Bot Files".
 4.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
+5.  (Opcjonalnie) Możesz także pobrać zaktualizowane pliki programu DBM, Da ci to dostęp do kilku dodatkowych nowych funkcji.
 
 Gotowe! już masz bota na najnowszej wersji discord.js!
 Możesz także zaktualizować już istniejącego bota ale możliwe że będziesz musiał ustawić na nowo dużo rzeczy.
