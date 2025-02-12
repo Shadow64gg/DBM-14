@@ -14,10 +14,6 @@
 
 # Pobieranie
 
-Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
-
-1.  Pobierz pakiet, którego potrzebujesz:
-
 | Pakiet    |                                                        Linki Do Pobrania                                                         |
 | ---------- | :--------------------------------------------------------------------------------------------------------------------------: |
 | Actions    |  [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/actions)   |
@@ -27,11 +23,29 @@ Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
 | Bot Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/bot%20files) |
 | DBM Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/dbm%20files) |
 
+# Instrukcja 1 (pobierania modów)
 
+Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
+
+1.  Pobierz pakiet, którego potrzebujesz:
 2.  Na górnym pasku Discord Bot Maker kliknij Project → Open Project Directory (otworzy się folder twojego bota)
 3.  Wyodrębnij zawartość pliku .zip oraz wrzuć mody do odpowiedniego folderu
     (Zastąp istniejące pliki, jeśli zostaniesz o to poproszony)
 
 Aby zainstalować rozszerzenia, musisz przenieść plik .js z folderu rozszerzeń i umieścić go bezpośrednio w folderze rozszerzeń swojego projektu.
+
+**Będziesz musiał powtórzyć ten proces dla wszystkich swoich projektów**
+
+# Instrukcja 2 (DBM v13 → v14)
+
+Poniżej masz instrukcję jak pobrać/zaktualizować bota z v13 na v14.
+
+1.  Pobierz najnowszą wersję [node.js](https://nodejs.org/en).
+2.  Wejdź w DBM → Settings → Editor Settings (wyłącz wszystkie opcje oprócz "Allow Action Dialog Resizing").
+3.  Pobierz pakiet "Bot Files".
+4.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
+
+Gotowe! już masz bota na najnowszej wersji discord.js!
+Potrzebujesz więcej akcji, eventów lub innych dodatków? Cofnij się do "Instrukcja 1".
 
 **Będziesz musiał powtórzyć ten proces dla wszystkich swoich projektów**
