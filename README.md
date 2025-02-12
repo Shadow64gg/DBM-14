@@ -40,7 +40,7 @@ Aby zainstalować rozszerzenia, musisz przenieść plik .js z folderu rozszerze�
 
 Poniżej masz instrukcję jak pobrać/zaktualizować bota z v13 na v14.
 
-1.  Pobierz najnowszą wersję [node.js](https://nodejs.org/en).
+1.  Pobierz najnowszą wersję [node.js](https://nodejs.org/en) (np. v22).
 2.  Wejdź w DBM → Settings → Editor Settings (wyłącz wszystkie opcje oprócz "Allow Action Dialog Resizing").
 3.  Pobierz pakiet "Bot Files".
 4.  Wypakuj pobranego bota na pulpicie i otwórz go za pomocą DBM.
