@@ -25,7 +25,7 @@
 | Bot Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/bot%20files) |
 | DBM Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/dbm%20files) |
 
-# Instrukcja 1 (pobierania modów)
+# Instrukcja 1 (pobieranie modów)
 
 Poniżej masz instrukcję jak pobrać i wgrać mody do swojego bota.
 
