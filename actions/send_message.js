@@ -151,7 +151,7 @@ module.exports = {
         href="https://github.com/Shadow64gg/DBM-14"
         target="_blank"
         style="color: #0077ff; text-decoration: none"
-        >1.7</a
+        >1.8</a
       >
     </p>
   </div>
@@ -479,16 +479,7 @@ module.exports = {
           <span class="dbminputlabel">Temporary Time-Limit (Miliseconds)</span>
           <input id="time" placeholder="60000" class="round" type="text">
 
-          <div style="padding-top: 8px; margin-top: 10px;">
-          <span class="dbminputlabel">Interaction Select Menu</span>
-          <select id="InteractionSelectMenu" class="round">
-            <option value="0">currently unavailable</option>
-            <option value="1">None</option>
-            <option value="2">Re-Enable Select Menu</option>
-            <option value="3">Disable Select Menu</option>
-            <option value="4">Remove Select Menu</option>
-          </select>
-        </div>
+          
 
         </div>
 
