@@ -7,7 +7,8 @@ module.exports = {
     `Temp Variable Name (Stores channel that the member joined):
     <div id="tempVarStore3" style="position: absolute; right: 0; top: 0; transform: translateX(0%);">
                 <span class="dbminputlabel" id="tempLabel3">Temp Variable Name (Stores channel that the member left):</span>
-                <input class="dbm_input" id="etemp3" style="width: 100%;" onchange="DBM.etempSaveData('etemp3')" type="text" value="channel2">
+                <input class="dbm_input" id="etemp3" style="width: 100%;" onchange="DBM.etempSaveData('etemp3')" type="text">
+                (the variable is saved but not displayed in the GUI!)
             </div>
     `,
   ],
@@ -21,23 +22,23 @@ module.exports = {
       newVoiceState
     ) {
       if (!Bot.$evts["Member Move Voice Channel"]) return;
-      const oldChannel = oldVoiceState.channel;
-      const newChannel = newVoiceState.channel;
+      const leftChannel = oldVoiceState.channel; // Zmieniono na leftChannel
+      const joinedChannel = newVoiceState.channel; // Zmieniono na joinedChannel
       if (
-        !oldChannel ||
-        !newChannel ||
-        !oldChannel.id ||
-        !newChannel.id ||
-        oldChannel.id === newChannel.id
+        !leftChannel ||
+        !joinedChannel ||
+        !leftChannel.id ||
+        !joinedChannel.id ||
+        leftChannel.id === joinedChannel.id
       )
         return;
-      const server = newChannel.guild;
+      const server = joinedChannel.guild;
 
       for (const event of Bot.$evts["Member Move Voice Channel"]) {
         const temp = {};
         if (event.temp) temp[event.temp] = newVoiceState.member;
-        if (event.temp2) temp[event.temp2] = newChannel;
-        if (event.temp3) temp[event.temp3] = oldChannel;
+        if (event.temp2) temp[event.temp2] = joinedChannel; // Zmieniono na joinedChannel
+        if (event.temp3) temp[event.temp3] = leftChannel; // Zmieniono na leftChannel
         Actions.invokeEvent(event, server, temp);
       }
     };
