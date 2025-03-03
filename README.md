@@ -22,7 +22,7 @@
 | Events     |   [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/events)   |
 | Extensions | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/extensions) |
 | Raw Data | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/raw%20data) |
-| Themes | [Pobierz](dd) |
+| Themes | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/themes) |
 | Bot Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/bot%20files) |
 | DBM Files | [Pobierz](https://shadow64gg.github.io/DBM-DownGit/#/home?url=https://github.com/Shadow64gg/DBM-14/tree/DBM-v14/dbm%20files) |
 
