@@ -1,25 +1,55 @@
 module.exports = {
+  //---------------------------------------------------------------------
+  // Action Name
+  //---------------------------------------------------------------------
+
   name: "Translate",
+
+  //---------------------------------------------------------------------
+  // Action Section
+  //---------------------------------------------------------------------
+
   section: "Other Stuff",
+
+  //---------------------------------------------------------------------
+  // Action Meta Data
+  //---------------------------------------------------------------------
+
   meta: {
     version: "3.2.4",
-    preciseCheck: false,
+    preciseCheck: true,
     author: "Shadow",
     authorUrl: "https://github.com/Shadow64gg",
     downloadURL:
-      "https://github.com/Shadow64gg/DBM-14/blob/DBM-14/actions/translate_MOD.js",
+      "https://github.com/Shadow64gg/DBM-14/blob/DBM-v14/actions/translate_MOD.js",
   },
+
+  //---------------------------------------------------------------------
+  // Action Subtitle
+  //---------------------------------------------------------------------
 
   subtitle(data) {
     return `Translate to [${data.translateTo}]`;
   },
+
+  //---------------------------------------------------------------------
+  // Action Storage Function
+  //---------------------------------------------------------------------
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
     return [data.varName, "Translated Text"];
   },
 
+  //---------------------------------------------------------------------
+  // Action Fields
+  //---------------------------------------------------------------------
+
   fields: ["translateTo", "translateMessage", "storage", "varName"],
+
+  //---------------------------------------------------------------------
+  // Command HTML
+  //---------------------------------------------------------------------
 
   html() {
     return `
@@ -46,7 +76,15 @@ module.exports = {
     </div>`;
   },
 
+  //---------------------------------------------------------------------
+  // Action Editor Init Code
+  //---------------------------------------------------------------------
+
   init() {},
+
+  //---------------------------------------------------------------------
+  // Action Bot Function
+  //---------------------------------------------------------------------
 
   async action(cache) {
     process.emitWarning = (message, type, code, ctor) => {
@@ -63,24 +101,28 @@ module.exports = {
     const storage = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
 
-    const Mods = this.getMods();
-    const translate = Mods.require("node-google-translate-skidz");
+    const translate = require("translate").default;
+
+    translate.engine = "google";
 
     if (!translateTo || translateTo.length > 2) return;
     if (!translateMessage) return;
 
     let result;
     try {
-      const { translation } = await translate(translateMessage, translateTo);
-      result = translation;
+      result = await translate(translateMessage, { to: translateTo });
     } catch (error) {
-      console.error("Translation error:", error);
+      console.error("[Translate] Translation error:", error);
       result = null;
     }
 
     if (result) this.storeValue(result, storage, varName, cache);
     this.callNextAction(cache);
   },
+
+  //---------------------------------------------------------------------
+  // Action Bot Mod
+  //---------------------------------------------------------------------
 
   mod() {},
 };
